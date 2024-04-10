@@ -46,12 +46,10 @@ function Home()
           </center>
           <MDBCardBody>
             <MDBCardTitle>{item.title}</MDBCardTitle>
-            <MDBCardText>{item.description.slice(0,100)}</MDBCardText>
             <MDBCardTitle style={{color:"green"}}>{item.category}</MDBCardTitle>
-            <MDBCardText style={{color:"red"}}>RS.{item.price*80}/-</MDBCardText>
             <MDBCardText style={{color:"blue"}}>{item.rating.rate}</MDBCardText>
             <MDBCardText style={{color:"brown"}}>{item.rating.count}</MDBCardText>
-            <MDBBtn onClick={()=>getid(item.id)}>View Details{item.id}</MDBBtn>
+            <MDBBtn onClick={()=>getid(item.id)}>View Details</MDBBtn>
           </MDBCardBody>
         </MDBCard>
       </MDBCol>

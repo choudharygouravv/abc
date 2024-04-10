@@ -6,12 +6,15 @@ import {
   MDBCardTitle,
   MDBCardText,
   MDBRow,
-  MDBCol
+  MDBCol,
+  MDBBtn
 } from 'mdb-react-ui-kit';
+import { useNavigate } from 'react-router-dom';
 
 function Jwellery()
 {
   const[apidata, setApidata]=useState([]);
+  const navigate=useNavigate();
   useEffect(()=>{
     fetch("https://fakestoreapi.com/products/category/jewelery").then((result)=>{
       result.json().then((data)=>{
@@ -20,6 +23,11 @@ function Jwellery()
       })
     })
   },[])
+  function getid(pid)
+  {
+    const data={pid:pid};
+    navigate("/item", {state:data});
+  }
     return(
       <div>
         <br></br>
@@ -43,6 +51,7 @@ function Jwellery()
             <MDBCardText style={{color:"red"}}>RS.{item.price*80}/-</MDBCardText>
             <MDBCardText style={{color:"blue"}}>{item.rating.rate}</MDBCardText>
             <MDBCardText style={{color:"brown"}}>{item.rating.count}</MDBCardText>
+            <MDBBtn onClick={()=>getid(item.id)}>View Details</MDBBtn>
           </MDBCardBody>
         </MDBCard>
       </MDBCol>
