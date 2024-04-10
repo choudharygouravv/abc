@@ -6,12 +6,15 @@ import {
   MDBCardTitle,
   MDBCardText,
   MDBRow,
-  MDBCol
+  MDBCol,
+  MDBBtn
 } from 'mdb-react-ui-kit';
+import { useNavigate } from 'react-router-dom';
 
 function Home()
 {
   const[apidata, setApidata]=useState([]);
+  const navigate=useNavigate()
   useEffect(()=>{
     fetch("https://fakestoreapi.com/products").then((result)=>{
       result.json().then((data)=>{
@@ -20,13 +23,18 @@ function Home()
       })
     })
   },[])
+  function getid(pid)
+  {
+    const data={pid:pid}
+    navigate("/item", {state:data})
+  }
     return(
       <div>
         <br></br>
       <MDBRow className='row-cols-1 row-cols-md-3 g-4'>
       {
-        apidata.map((item)=>
-        <MDBCol>
+        apidata.map((item,i)=>
+        <MDBCol key={i}>
         <MDBCard>
           <center>
           <MDBCardImage
@@ -43,6 +51,7 @@ function Home()
             <MDBCardText style={{color:"red"}}>RS.{item.price*80}/-</MDBCardText>
             <MDBCardText style={{color:"blue"}}>{item.rating.rate}</MDBCardText>
             <MDBCardText style={{color:"brown"}}>{item.rating.count}</MDBCardText>
+            <MDBBtn onClick={()=>getid(item.id)}>View Details{item.id}</MDBBtn>
           </MDBCardBody>
         </MDBCard>
       </MDBCol>

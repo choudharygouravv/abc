@@ -9,6 +9,7 @@ import WClothes from "./WClothes";
 import Post from "./Post";
 import Update from "./Update";
 import Delete from "./Delete";
+import Item from "./Item";
 
 
 function Routing()
@@ -19,13 +20,14 @@ function Routing()
           <Header></Header>
           <Routes>
                 <Route path="/" element={<Home></Home>}></Route>
-                <Route path="clothes" element={<Clothes></Clothes>}></Route>
-                <Route path="wclothes" element={<WClothes></WClothes>}></Route>
-                <Route path="jwellery" element={<Jwellery></Jwellery>}></Route>
+                <Route path="/clothes" element={<Clothes></Clothes>}></Route>
+                <Route path="/wclothes" element={<WClothes></WClothes>}></Route>
+                <Route path="/jwellery" element={<Jwellery></Jwellery>}></Route>
                 <Route path="electronics" element={<Electronic></Electronic>}></Route>
-                <Route path="post" element={<Post></Post>}></Route>
-                <Route path="update" element={<Update></Update>}></Route>
-                <Route path="delete" element={<Delete></Delete>}></Route>
+                <Route path="/post" element={<Post></Post>}></Route>
+                <Route path="/update" element={<Update></Update>}></Route>
+                <Route path="/delete" element={<Delete></Delete>}></Route>
+                <Route path="/item" element={<Item></Item>}></Route>
             </Routes>
             <Footer></Footer>
           </BrowserRouter>
